@@ -1,0 +1,39 @@
+services:
+  backend:
+    build:
+      context: ./Backend
+      dockerfile: Dockerfile.dev
+    container_name: book-selling-backend-dev
+    ports:
+      - "3001:3001"
+    volumes:
+      - ./Backend:/app
+      - /app/node_modules
+    env_file:
+      - ./Backend/.env
+    restart: unless-stopped
+    networks:
+      - book-selling-network
+    command: npm start
+
+  frontend:
+    build:
+      context: ./FrontEnd
+      dockerfile: Dockerfile.dev
+    container_name: book-selling-frontend-dev
+    ports:
+      - "5173:5173"
+    volumes:
+      - ./FrontEnd:/app
+      - /app/node_modules
+    environment:
+      - VITE_API_URL=http://localhost:3001
+    restart: unless-stopped
+    networks:
+      - book-selling-network
+    command: npm run dev -- --host
+
+networks:
+  book-selling-network:
+    driver: bridge
+
