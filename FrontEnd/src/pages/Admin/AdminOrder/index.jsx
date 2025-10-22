@@ -88,7 +88,7 @@ function AdminOrder() {
                 <div className="ps">
                     <p>Mã đơn hàng: {ord._id}</p>
                     <p>Mã khách hàng: {ord.userId}</p>
-                    <p>Tổng giá trị đơn hàng: {ord.total.toLocaleString("vi-VN")}₫</p>
+                    <p>Tổng giá trị đơn hàng: {ord?.total?.toLocaleString("vi-VN")}₫</p>
                     <p>Giảm giá: {ord?.discount.toLocaleString("vi-VN")}₫</p>
                     <p>Phương thức thanh toán: {ord.type}</p>
                     <div style={{ display: "flex" }}>
@@ -196,7 +196,7 @@ function AdminOrder() {
                                     <td className="adormadh" onClick={() => handleViewO(o._id)}>{o._id}</td>
                                     <td>{o.name}</td>
                                     <td className="stt">{o.phone}</td>
-                                    <td>{o.total.toLocaleString("vi-VN")}₫</td>
+                                    <td>{o?.total?.toLocaleString("vi-VN")}₫</td>
                                     <td className="stt" style={{ width: "120px" }}>{o.type}</td>
                                     <td>{o.createdAt}</td>
                                 </tr>)}
@@ -223,7 +223,7 @@ function AdminOrder() {
                                     <td className="adormadh" onClick={() => handleViewO(o._id)}>{o._id}</td>
                                     <td>{o.name}</td>
                                     <td className="stt">{o.phone}</td>
-                                    <td>{o.total.toLocaleString("vi-VN")}₫</td>
+                                    <td>{o?.total?.toLocaleString("vi-VN")}₫</td>
                                     <td className="stt" style={{ width: "120px" }}>{o.type}</td>
                                     <td>{o.createdAt}</td>
                                 </tr>)}
@@ -250,7 +250,7 @@ function AdminOrder() {
                                     <td className="adormadh" onClick={() => handleViewO(o._id)}>{o._id}</td>
                                     <td>{o.name}</td>
                                     <td className="stt">{o.phone}</td>
-                                    <td>{o.total.toLocaleString("vi-VN")}₫</td>
+                                    <td>{o?.total?.toLocaleString("vi-VN")}₫</td>
                                     <td className="stt" style={{ width: "120px" }}>{o.type}</td>
                                     <td>{o.createdAt}</td>
                                 </tr>)}
@@ -277,7 +277,7 @@ function AdminOrder() {
                                     <td className="adormadh" onClick={() => handleViewO(o._id)}>{o._id}</td>
                                     <td>{o.name}</td>
                                     <td className="stt">{o.phone}</td>
-                                    <td>{o.total.toLocaleString("vi-VN")}</td>
+                                    <td>{o?.total?.toLocaleString("vi-VN")}</td>
                                     <td className="stt" style={{ width: "120px" }}>{o.type}</td>
                                     <td>{o.createdAt}</td>
                                 </tr>)}
@@ -304,7 +304,7 @@ function AdminOrder() {
                                     <td className="adormadh" onClick={() => handleViewO(o._id)}>{o._id}</td>
                                     <td>{o.name}</td>
                                     <td className="stt">{o.phone}</td>
-                                    <td>{o.total.toLocaleString("vi-VN")}</td>
+                                    <td>{o?.total?.toLocaleString("vi-VN")}</td>
                                     <td className="stt" style={{ width: "120px" }}>{o.type}</td>
                                     <td>{o.createdAt}</td>
                                 </tr>)}

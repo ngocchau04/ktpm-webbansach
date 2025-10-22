@@ -257,3 +257,32 @@ npm run build
 Dự án này được phân phối dưới giấy phép MIT. Xem file `LICENSE` để biết thêm chi tiết.
 
 --------
+
+9 USE CASES CHÍNH CỦA HỆ THỐNG WEB BÁN SÁCH
+1. Authentication & User Management
+Mô tả: Quản lý toàn bộ quy trình xác thực và quản lý người dùng
+Bao gồm: Đăng ký, đăng nhập, xác thực email, quản lý profile, phân quyền
+2. Product Management
+Mô tả: Quản lý danh mục sản phẩm và thông tin sách
+Bao gồm: CRUD sản phẩm, tìm kiếm, lọc, sắp xếp, upload hình ảnh
+3. Shopping Cart & Wishlist
+Mô tả: Quản lý giỏ hàng và danh sách yêu thích
+Bao gồm: Thêm/xóa/cập nhật giỏ hàng, quản lý wishlist
+4. Order Management
+Mô tả: Xử lý toàn bộ quy trình đặt hàng và theo dõi đơn hàng
+Bao gồm: Tạo đơn, thanh toán, cập nhật trạng thái, lịch sử đơn hàng
+5. Voucher Management
+Mô tả: Quản lý hệ thống mã giảm giá và khuyến mãi
+Bao gồm: Tạo, áp dụng, kiểm tra và quản lý voucher
+6. Review & Feedback
+Mô tả: Hệ thống đánh giá và phản hồi sản phẩm
+Bao gồm: Tạo/xem/quản lý đánh giá và feedback từ khách hàng
+7. Analytics & Reporting
+Mô tả: Thống kê và báo cáo doanh thu, hiệu suất kinh doanh
+Bao gồm: Báo cáo doanh thu, thống kê người dùng, phân tích sản phẩm
+8. Communication
+Mô tả: Hệ thống giao tiếp và hỗ trợ khách hàng
+Bao gồm: Chat support, email notifications
+9. System Operations
+Mô tả: Các tác vụ vận hành và bảo trì hệ thống
+Bao gồm: Khởi tạo dữ liệu, backup, quản lý phiên, xử lý lỗi
