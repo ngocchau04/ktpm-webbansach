@@ -126,7 +126,7 @@ const sampleVouchers = [
 
 const insertSampleData = async () => {
     try {
-        await mongoose.connect('mongodb+srv://trantuananhbo2093:FPa18YPpQAi7VkSM@cluster0.lydwo.mongodb.net/bookDB?retryWrites=true&w=majority&appName=Cluster0'); // Replace with your MongoDB URI
+        await mongoose.connect('mongodb+srv://damthingocchau:admin123@cluster0.lgfxk.mongodb.net/shopbook'); // Replace with your MongoDB URI
         console.log('Connected to MongoDB');
 
         const count = await Voucher.countDocuments();

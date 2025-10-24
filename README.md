@@ -280,9 +280,6 @@ Bao gồm: Tạo đơn hàng, thanh toán, xem lịch sử đơn hàng, theo dõ
 7. Apply Vouchers & Promotions
 Mô tả: Sử dụng mã giảm giá và khuyến mãi
 Bao gồm: Xem voucher available, áp dụng mã giảm giá, kiểm tra điều kiện voucher
-8. Write Reviews & Feedback
-Mô tả: Đánh giá và phản hồi về sản phẩm
-Bao gồm: Viết đánh giá sách, cho điểm sao, xem đánh giá khác, gửi feedback
-9. Customer Support & Profile Management
-Mô tả: Quản lý thông tin cá nhân và nhận hỗ trợ
-Bao gồm: Cập nhật profile, chat support, nhận email thông báo, đổi mật khẩu
+8. Profile Management
+Mô tả: Quản lý thông tin cá nhân
+Bao gồm: Cập nhật profile, nhận email thông báo, đổi mật khẩu

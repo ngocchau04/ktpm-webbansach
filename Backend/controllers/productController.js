@@ -64,6 +64,12 @@ router.post("/", checkAdmin, async (req, res) => {
       type: req.body.type,
     };
 
+    // Chuyển đổi price từ string có dấu phẩy thành number
+    if (productData.price && typeof productData.price === 'string') {
+      // Loại bỏ dấu phẩy và chuyển thành number
+      productData.price = parseInt(productData.price.replace(/,/g, ''));
+    }
+
     const product = new Product(productData);
     await product.save();
     res.status(201).json({ status: "success", data: product });
@@ -112,6 +118,16 @@ router.put("/:id", checkAdmin, async (req, res) => {
       type: req.body.type,
     };
 
+    // SỬA: Đổi updateData thành updatedData
+    if (updatedData.price && typeof updatedData.price === 'string') {
+      updatedData.price = parseInt(updatedData.price.replace(/,/g, ''));
+    }
+    
+    // THÊM: Xử lý originalPrice
+    if (updatedData.originalPrice && typeof updatedData.originalPrice === 'string') {
+      updatedData.originalPrice = parseInt(updatedData.originalPrice.replace(/,/g, ''));
+    }
+
     product.set(updatedData);
     await product.save();
     res.status(200).json({ status: "success", data: product });
@@ -150,9 +166,7 @@ router.post("/list", async (req, res) => {
     console.error("Error fetching products:", error);
     res.status(500).json({ status: "error", message: "Server error" });
   }
-}
-  
-  );
+});
 
   router.get('/similar/:type', async (req, res) => {
     try {
