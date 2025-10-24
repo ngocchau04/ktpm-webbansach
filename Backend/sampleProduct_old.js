@@ -144,8 +144,8 @@ const insertSampleData = async () => {
     var count = await Product.countDocuments();
     if (count > 0) {
       console.log(`Collection is currently having ${count} entries`);
-      await Product.deleteMany();
-      console.log('Existing data cleared');
+      // await Product.deleteMany();
+      // console.log('Existing data cleared');
     } else {
       console.log('Collection is empty');
     }
