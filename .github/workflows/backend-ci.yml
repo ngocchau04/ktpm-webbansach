@@ -8,29 +8,29 @@ on:
 
 jobs:
   backend-tests:
-    name: Run Backend Tests
     runs-on: ubuntu-latest
 
     services:
-      mongo:
+      mongodb:
         image: mongo:6
         ports:
           - 27017:27017
         options: >-
-          --health-cmd="mongosh --eval 'db.adminCommand(\"ping\")'"
-          --health-interval=10s
+          --health-cmd="mongosh --eval 'db.adminCommand({ ping: 1 })'"
+          --health-interval=5s
           --health-timeout=5s
-          --health-retries=5
+          --health-retries=10
+          --health-start-period=5s
 
     env:
       NODE_ENV: test
-      MONGO_URI: mongodb://mongo:27017/ktpm_webbansach_test
+      MONGO_URI: mongodb://localhost:27017/ktpm_webbansach_test
 
     steps:
       - name: Checkout source code
         uses: actions/checkout@v4
 
-      - name: Use Node.js
+      - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 20
@@ -38,7 +38,6 @@ jobs:
       - name: Install Backend dependencies
         working-directory: ./Backend
         run: npm install --legacy-peer-deps
-
 
       - name: Run Backend tests
         working-directory: ./Backend
