@@ -1,6 +1,6 @@
 const jwt = require("jsonwebtoken");
 const { sendMail } = require("../services/emailService");
-const bcrypt = require("bcrypt");
+// const bcrypt = require("bcrypt");
 const express = require("express");
 const router = express.Router();
 const { ObjectId } = require("mongodb");
