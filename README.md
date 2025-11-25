@@ -179,7 +179,7 @@ webbansach/
 
 Sau khi khởi tạo dữ liệu, bạn có thể sử dụng:
 - **Email:** admin@bookstore.com
-- **Password:** admin123
+- **Password:** 123456789
 
 ## 🎯 Sử dụng ứng dụng
 
@@ -246,11 +246,7 @@ npm run build
 4. Push to branch (`git push origin feature/AmazingFeature`)
 5. Tạo Pull Request
 
-## 📞 Liên hệ
 
-- **Developer:** Thanhnebe
-- **Email:** damthingocchau26@gmail.com
-- **Repository:** https://github.com/Thanhnebe/webbansach
 
 ## 📄 License
 
