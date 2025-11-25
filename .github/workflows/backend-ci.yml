@@ -37,7 +37,8 @@ jobs:
 
       - name: Install Backend dependencies
         working-directory: ./Backend
-        run: npm install
+        run: npm install --legacy-peer-deps
+
 
       - name: Run Backend tests
         working-directory: ./Backend
