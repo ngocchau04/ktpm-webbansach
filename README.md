@@ -56,7 +56,7 @@ Một ứng dụng web bán sách được xây dựng với React.js (Frontend)
 ### 1. Clone repository
 
 ```bash
-git clone https://github.com/Thanhnebe/webbansach.git
+git clone https://github.com/ngocchau04/ktpm-webbansach.git
 cd webbansach
 ```
 
@@ -178,7 +178,7 @@ webbansach/
 ## 🔒 Tài khoản Admin mặc định
 
 Sau khi khởi tạo dữ liệu, bạn có thể sử dụng:
-- **Email:** admin@bookstore.com
+- **Email:** thanhdev38@gmail.com
 - **Password:** 123456789
 
 ## 🎯 Sử dụng ứng dụng
