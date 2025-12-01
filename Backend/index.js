@@ -8,6 +8,11 @@ require("dotenv").config();
 app.use(cors());
 app.use(express.json());
 
+// ➕ THÊM ROUTE HEALTHCHECK
+app.get("/health", (req, res) => {
+  res.status(200).send("OK");
+});
+
 // Routes
 app.use("/", require("./controllers/userController"));
 app.use("/search", require("./controllers/searchController"));

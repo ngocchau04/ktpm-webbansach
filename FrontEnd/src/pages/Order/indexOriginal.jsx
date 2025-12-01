@@ -110,107 +110,74 @@ const Order = () => {
     }
   }, [book, user?.order?.products]);
 
-    const handleBuy = async () => {
-      const jwt = localStorage.getItem("token");
-      if (!jwt) {
-        alert("Vui lòng đăng nhập để đặt hàng!");
-        return;
-      }
-      if (!user.order || user.order.products.length === 0) {
-        alert("Vui lòng thêm sản phẩm vào giỏ hàng!");
-        return;
-      }
-      if (isApply === false) {
-        alert("Lỗi khi đặt hàng: Voucher không hợp lệ!");
-        return;
-      }
-      if (name.trim() === "") {
-        alert("Vui lòng nhập tên!");
-        return;
-      }
-      if (email.trim() === "") {
-        alert("Vui lòng nhập email!");
-        return;
-      }
-      if (phone.trim() === "") {
-        alert("Vui lòng nhập số điện thoại!");
-        return;
-      }
-      if (address.trim() === "") {
-        alert("Vui lòng nhập địa chỉ!");
-        return;
-      }
-
-      const orderData = {
-        userId: user._id,
-        name,
-        phone,
-        email,
-        address,
-        type: selectedPayment,
-        products: user.order.products.map((product) => ({
-          productId: product.id,
-          quantity: product.quantity,
-        })),
-        total,
-        discount: discount + (valueVoucher ? valueVoucher : 0),
-      };
-
-      try {
-        // 1) Tạo đơn hàng
-        const res = await axios.post("http://localhost:3001/order", orderData, {
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${jwt}`,
-          },
-        });
-
-        if (res.status === 201) {
-          // 2) Lấy danh sách productId đã đặt
-          const ids =
-            user.order?.products?.map((p) => p.id) ?? [];
-
-          // 3) Xoá các sản phẩm này khỏi giỏ trên backend
-          if (ids.length > 0) {
-            try {
-              await axios.delete("http://localhost:3001/cart/list", {
-                headers: {
-                  Authorization: `Bearer ${jwt}`,
-                },
-                data: { ids },
-              });
-            } catch (err) {
-              console.error("Lỗi khi xóa giỏ hàng sau khi đặt:", err);
-              // Không bắt buộc phải alert fail, vì đơn đã tạo xong rồi
-            }
-          }
-
-          // 4) Cập nhật lại context: xoá các sản phẩm khỏi user.cart + clear order
-          setUser((prev) => ({
-            ...prev,
-            cart: prev.cart
-              ? prev.cart.filter(
-                  (item) => !ids.includes(item.product)
-                )
-              : [],
-            order: { products: [] },
-          }));
-
-          alert("Đặt hàng thành công!");
-
-          // 5) Điều hướng như logic cũ
-          if (selectedPayment === "online") {
-            navigate("/payment", { state: { total: orderData.total } });
-          } else {
-            navigate("/profile");
-          }
-        }
-      } catch (error) {
-        console.error("Lỗi khi đặt hàng:", error);
-        alert("Đặt hàng thất bại!");
-      }
+  const handleBuy = async () => {
+    const jwt = localStorage.getItem("token");
+    if (!jwt) {
+      alert("Vui lòng đăng nhập để đặt hàng!");
+      return;
+    }
+    if (user.order.products.length === 0) {
+      alert("Vui lòng thêm sản phẩm vào giỏ hàng!");
+      return;
+    }
+    if (isApply === false){
+      alert("Lỗi khi đặt hàng: Voucher không hợp lệ!");
+      return;
+    }
+    if (name.trim()===""){
+      alert("Vui lòng nhập tên!");
+      return;
+    }
+    if (email.trim()===""){
+      alert("Vui lòng nhập email!");
+      return;
+    }
+    if (phone.trim()===""){
+      alert("Vui lòng nhập số điện thoại!");
+      return;
+    }
+    if (address.trim()===""){
+      alert("Vui lòng nhập địa chỉ!");
+      return;
+    }
+    const orderData = {
+      userId: user._id,
+      name: name,
+      phone: phone,
+      email: email,
+      address: address,
+      type: selectedPayment,
+      products: user.order.products.map((product, index) => ({
+        productId: product.id,
+        quantity: product.quantity,
+      })),
+      total: total,
+      discount: discount + valueVoucher ? valueVoucher : 0,
     };
 
+    try {
+      const res = await axios.post("http://localhost:3001/order", orderData, {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${jwt}`,
+        },
+      });
+      if (res.status === 201) {
+        alert("Đặt hàng thành công!");
+        setUser({ ...user, order: { products: [] } });
+        if (selectedPayment === "online") {
+          // Chuyển hướng sang trang thanh toán
+          navigate("/payment", { state: { total: orderData.total } });
+        }
+        else {
+          navigate("/profile");
+        }
+      }
+    } catch (error) {
+      console.error("Lỗi khi đặt hàng:", error);
+      alert("Đặt hàng thất bại!");
+    }
+  };
   
   const handleVoucher = async () => {
     const jwt = localStorage.getItem("token");

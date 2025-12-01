@@ -338,6 +338,7 @@ router.delete("/cart/list", checkLogin, async (req, res) => {
 });
 
 // favorite
+// favorite
 router.get("/favorite", checkLogin, async (req, res) => {
   try {
     const user = await User.findById(req.user.userId).populate(
@@ -346,12 +347,38 @@ router.get("/favorite", checkLogin, async (req, res) => {
     if (!user) {
       return res.status(404).json({ message: "Người dùng không tồn tại." });
     }
-    res.status(200).json({ favorite: user.favorite });
+
+    // Lọc bỏ những phần tử favorite có product = null (sách đã bị xoá)
+    const cleanedFavorites = user.favorite.filter((fav) => fav.product);
+
+    // Nếu có sự khác biệt thì lưu lại DB (dọn rác)
+    if (cleanedFavorites.length !== user.favorite.length) {
+      user.favorite = cleanedFavorites;
+      await user.save();
+    }
+
+    // Trả về danh sách đã làm sạch
+    res.status(200).json({ favorite: cleanedFavorites });
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: "Lỗi khi lấy danh sách yêu thích." });
   }
 });
+
+// router.get("/favorite", checkLogin, async (req, res) => {
+//   try {
+//     const user = await User.findById(req.user.userId).populate(
+//       "favorite.product"
+//     );
+//     if (!user) {
+//       return res.status(404).json({ message: "Người dùng không tồn tại." });
+//     }
+//     res.status(200).json({ favorite: user.favorite });
+//   } catch (error) {
+//     console.error(error);
+//     res.status(500).json({ message: "Lỗi khi lấy danh sách yêu thích." });
+//   }
+// });
 
 router.post("/favorite", checkLogin, async (req, res) => {
   const { productId } = req.body;
