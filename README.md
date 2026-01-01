@@ -279,3 +279,10 @@ Bao gồm: Xem voucher available, áp dụng mã giảm giá, kiểm tra điều
 8. Profile Management
 Mô tả: Quản lý thông tin cá nhân
 Bao gồm: Cập nhật profile, nhận email thông báo, đổi mật khẩu
+
+---
+
+## Thành viên:
+3122411020 - Đàm Thị Ngọc Châu (Trưởng nhóm)
+3122411173 - Võ Hoàng Kim Quyên
+3122411243 - Phan Thị Hải Vân
