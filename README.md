@@ -283,6 +283,6 @@ Bao gồm: Cập nhật profile, nhận email thông báo, đổi mật khẩu
 ---
 
 ## Thành viên:
-3122411020 - Đàm Thị Ngọc Châu (Trưởng nhóm)
-3122411173 - Võ Hoàng Kim Quyên
-3122411243 - Phan Thị Hải Vân
+1. 3122411020 - Đàm Thị Ngọc Châu (Trưởng nhóm)
+2. 3122411173 - Võ Hoàng Kim Quyên
+3. 3122411243 - Phan Thị Hải Vân
